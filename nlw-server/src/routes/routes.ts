@@ -1,13 +1,9 @@
 import { PrismaFeedbacksRepository } from './../repositories/prisma/prisma-feedback-repository';
 import { SubmitFeedbackUseCase } from './../use-cases/submit-feedback-use-case';
 import express from 'express';
-import nodemailer from 'nodemailer';
-import { prisma } from '../prisma';
 import { NodeMailerMailAdapter } from '../adapters/nodemaler/nodemailer-mail-adapter';
 
 export const routes = express.Router();
-
-
 
 //req é onde mandaremos o json do nosso feedback
 routes.post('/feedbacks', async (req, res) => {

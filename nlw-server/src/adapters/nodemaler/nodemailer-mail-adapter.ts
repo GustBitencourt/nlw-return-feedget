@@ -17,7 +17,7 @@ export class NodeMailerMailAdapter implements MailAdapter {
       from: "Equipe GustFeedGet <adm@gustfeedget.com",
       to: "Gustavo Gama <gubiten@gmail.com>",
       subject,
-      //corpo do email em html cada posição é referente a uma linha no email
+      //corpo do email
       html: body,
     });
   }

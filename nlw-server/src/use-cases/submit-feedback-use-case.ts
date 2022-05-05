@@ -16,6 +16,21 @@ export class SubmitFeedbackUseCase {
     //para utilizarmos short sintax abaixo
     const { type, comment, screenshot } = request;
 
+    //erro caso o type seja enviado vazio
+    if (!type) {
+      throw new Error("Type is required");
+    }
+
+    //erro caso o comentário seja enviado vazio
+    if (!comment) {
+      throw new Error("Comment is required");
+    }
+
+    //pegando erro caso a foto não esteja no formato correto
+    if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
+      throw new Error('Invalid screenshot formato');
+    }
+
     await this.feedbacksRepository.create({
       type,
       comment,
