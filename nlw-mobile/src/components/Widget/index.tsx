@@ -1,10 +1,21 @@
-import { Text, View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
+import { ChatTeardropDots } from 'phosphor-react-native';
+import { theme } from '../../theme';
 
 export const Widget = () => {
-  return (
-    <View style={styles.container}>
-      <Text>Vai Corinthians!</Text>
-    </View>
-  )
+    return (
+        <>
+            <TouchableOpacity
+                style={styles.button}
+            >
+                <ChatTeardropDots
+                    size={24}
+                    weight="bold"
+                    color={theme.colors.text_on_brand_color}
+                />
+
+            </TouchableOpacity>
+        </>
+    )
 }
