@@ -45,11 +45,11 @@ const Widget = () => {
                 backgroundStyle={styles.modal}
                 handleIndicatorStyle={styles.indicator}
             >
-                {/* <Form
+                <Form
                     feedbackType="BUG"                
-                /> */}
+                />
 
-                <Sucess />
+                {/* <Sucess /> */}
 
             </BottomSheet>
         </>

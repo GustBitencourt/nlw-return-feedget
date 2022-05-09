@@ -1,14 +1,15 @@
-import React from 'react';
+import { useState } from 'react';
 import { View, TextInput, Image, Text, TouchableOpacity } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
+import { captureScreen } from 'react-native-view-shot';
 
 import { FeedbackType } from '../Widget';
+import { SendButtom } from '../SendButtom';
+import { ScreenshotButtom } from '../ScreenshotButtom';
 
 import { styles } from './styles';
 import { theme } from '../../theme';
 import { feedbackTypes } from '../../utils/feedbackTypes';
-import { ScreenshotButtom } from '../ScreenshotButtom';
-import { SendButtom } from '../SendButtom';
 
 interface Props {
     feedbackType: FeedbackType;
@@ -17,6 +18,21 @@ interface Props {
 export function Form({ feedbackType }: Props) {
     //informações do conteúdo selecionado para pergamos sua image e texto
     const feedbackTypeInfo = feedbackTypes[feedbackType];
+
+    const [screenshot, setScreenshot] = useState<string | null>(null);
+
+    function handleScreenshot() {
+        captureScreen({
+            format: 'jpg',
+            quality: 0.8,
+        })
+        .then(uri => setScreenshot(uri))
+        .catch(err => console.error(err));
+    }
+
+    function handleScreenshotRemove() {
+        setScreenshot(null);
+    }
 
 
   return (
@@ -52,9 +68,9 @@ export function Form({ feedbackType }: Props) {
 
         <View style={styles.footer}>
             <ScreenshotButtom 
-                onTakeShot={() => {}}
-                onRemoveShot={() => {}}
-                screenshot="https://github.com/gustbitencourt.png"            
+                onTakeShot={handleScreenshot}
+                onRemoveShot={handleScreenshotRemove}
+                screenshot={screenshot}         
             />
 
             <SendButtom 
