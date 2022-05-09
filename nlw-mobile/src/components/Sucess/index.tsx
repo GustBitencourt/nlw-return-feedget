@@ -6,26 +6,33 @@ import { Copyright } from '../Copyright';
 
 import { styles } from './styles';
 
-export function Sucess() {
-  return (
-    <View style={styles.container}>
-        <Image
-            source={sucessImg}
-            style={styles.image}
-        />
+interface Props {
+    onSendAnotherFeedback: () => void;
+}
 
-        <Text style={styles.title}>
-            Agradecemos o seu Feedback
-        </Text>
+export function Sucess({ onSendAnotherFeedback }: Props) {
+    return (
+        <View style={styles.container}>
+            <Image
+                source={sucessImg}
+                style={styles.image}
+            />
 
-        <TouchableOpacity style={styles.button}>
-
-            <Text style={styles.buttonTitle}>
-                Quer enviar outro Feedback?
+            <Text style={styles.title}>
+                Agradecemos o seu Feedback
             </Text>
-        </TouchableOpacity>
 
-        <Copyright />
-    </View>
-  );
+            <TouchableOpacity
+                style={styles.button}
+                onPress={onSendAnotherFeedback}
+            >
+
+                <Text style={styles.buttonTitle}>
+                    Quer enviar outro Feedback?
+                </Text>
+            </TouchableOpacity>
+
+            <Copyright />
+        </View>
+    );
 }
