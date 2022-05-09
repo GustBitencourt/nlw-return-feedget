@@ -7,7 +7,12 @@ import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 import { styles } from './styles';
 import { theme } from '../../theme';
 import { Options } from '../Options';
+import { feedbackTypes } from '../../utils/feedbackTypes';
+import { Form } from '../Form';
 
+
+//pega os tipos das chaves de feedbackTypes 'BUG', 'OTHER', 'IDEA
+export type FeedbackType = keyof typeof feedbackTypes;
 
 const Widget = () => {
     //useRef para abrir sem precisar manipular estado
@@ -39,7 +44,9 @@ const Widget = () => {
                 backgroundStyle={styles.modal}
                 handleIndicatorStyle={styles.indicator}
             >
-                <Options />
+                <Form
+                    feedbackType="BUG"                
+                />
 
             </BottomSheet>
         </>
