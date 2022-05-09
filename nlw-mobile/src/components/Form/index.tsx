@@ -110,8 +110,8 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
             />
 
             <SendButtom
-                onPress={handleSendFeedback}
                 isLoading={isSendingFeedback}            
+                onPress={handleSendFeedback}
             />
 
         </View>
